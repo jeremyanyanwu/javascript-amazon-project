@@ -102,7 +102,9 @@ const object2 = {
         return new Product(productDetails);
       });
       console.log('loadProducts');
-    });
+    }).catch((error) => {
+      console.log('Unexpected error.please try again later');
+    }); 
 
     return promise;
   }
@@ -125,6 +127,10 @@ const object2 = {
       console.log('loadProducts');
 
       fun();
+    });
+
+    xhr.addEventListener('error', (error) => {
+      console.log('Unexpected error.please try again later');
     });
 
     xhr.open('GET', 'https://supersimplebackend.dev/products');
